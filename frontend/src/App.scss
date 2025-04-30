@@ -11,22 +11,40 @@ header {
 main.background {
 	background: url('./assets/hiddenBackground.jpg');
 	background-size: contain;
-	height: 100vh;
+	min-height: 100vh;
 
 
 	.overlay {
 		height: 100%;
+		min-height: 100vh;
 		background-color: rgba($color: #000000, $alpha: 0.7);
 		backdrop-filter: blur(50px);
 
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 50% 50%;
 
-		.left {
+		.content {
 			color: #fff;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+
+			.text-content {
+				padding: 0 60px;
+				h1 {
+					font-size: 48px;
+				}
+
+				p {
+					color: #bebebe;
+					padding: 0 150px;
+				}
+			}
 		}
 
-		.right {
+		.login {
+			z-index: 1;
 			background-color: #fff;
 			border-radius: 35px 0 0 35px;
 			display: flex;

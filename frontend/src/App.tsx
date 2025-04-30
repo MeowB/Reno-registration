@@ -1,5 +1,5 @@
 import Form from './components/Form/Form'
-import Caroussel from './components/Caroussel/Caroussel'
+import Carousel from './components/Carousel/Carousel'
 import './App.scss'
 
 
@@ -16,16 +16,17 @@ function App() {
 			</header>
 			<main className="background">
 				<div className="overlay">
-					<section className="left">
+					<section className="content">
 						<div className="text-content">
 							<h1>Manage your Money anywhere</h1>
 							<p>View all the analytics and grow your business from anywhere!</p>
 						</div>
-
-						<Caroussel />
+						<div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+							<Carousel />
+						</div>
 					</section>
-					<aside className="right">
-					<Form />
+					<aside className="login">
+						<Form />
 
 					</aside>
 				</div>

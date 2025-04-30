@@ -8,7 +8,7 @@ This is a small full-stack application built with **React**, **Express**, and **
 
 ### Frontend
 - **React** – For building the interactive user interface
-- **Vite** (or Create React App) – For fast development and bundling
+- **Vite** – For fast development and bundling
 
 ### Backend
 - **Express.js** – Lightweight Node.js framework for building the REST API

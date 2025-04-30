@@ -1,0 +1,78 @@
+.carousel {
+	width: 100%;
+
+	.carousel-wrapper {
+		width: 100%;
+		padding: 40px 0;
+
+		.carousel-card {
+			max-width: 500px;
+			height: 300px;
+			margin: 0 10px; // horizontal gap between slides
+			background: #242627;
+			border-radius: 12px;
+			text-align: center;
+			padding: 50px;
+
+			text-align: start;
+			line-height: 1.8rem;
+
+			p {
+				font-size: 18px;
+			}
+
+			.profile {
+				display: flex;
+				margin-top: 30px;
+
+				img {
+					border-radius: 50%;
+				}
+
+				.text {
+					margin-left: 15px;
+					.name {
+						font-size: 16px;
+						line-height: 1.2rem;
+
+					}
+
+					.role {
+						font-size: 14px;
+					}
+					
+				}
+			}
+		}
+	}
+
+
+	.slick-list {
+		overflow: show;
+	}
+
+	.slick-dots {
+		bottom: -120px; // optional: move dots lower
+		li {
+		  margin: 0 6px;
+	  
+		  button {
+			width: 5px;
+			height: 5px;
+			border-radius: 50%;
+			border: 1px solid #Fff;
+	  
+			&::before {
+			  content: '';
+			  display: none; // hide default circle
+			}
+		  }
+	  
+		  &.slick-active button {
+			background-color: #fff; // active dot color
+			border-color: #fff;  // optional: add border or glow
+		  }
+		}
+	  }
+
+}
