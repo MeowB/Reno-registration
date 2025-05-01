@@ -50,6 +50,40 @@ main.background {
 
 		}
 	}
+}
+
+@media screen and (max-width:1040px) {
+	* {
+		min-width: 0;
+	}
+
+	header {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 
 
+	main.background {
+		.overlay {
+			grid-template-columns: 1fr;
+
+			.login {
+				padding-top: 120px;
+				padding-bottom: 60px;
+				border-radius: 0 0 35px 35px;
+			}
+
+
+			.content {
+				grid-row-start: 2;
+								
+				.text-content {
+					margin-top: 120px;
+				}
+
+				padding-bottom: 120px;
+			}
+		}
+	}
 }

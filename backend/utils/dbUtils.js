@@ -23,7 +23,7 @@ export function resetDatabase() {
 		CREATE TABLE IF NOT EXISTS merchant_profiles (
 		  user_id INTEGER PRIMARY KEY,
 		  first_name TEXT NOT NULL,
-		  company_name TEXT,
+		  company_location TEXT,
 		  business_email TEXT NOT NULL,
 		  industry TEXT,
 		  phone_number TEXT,

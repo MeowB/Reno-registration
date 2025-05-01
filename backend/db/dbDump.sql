@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS merchant_profiles (
     user_id INT PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
-    company_name VARCHAR(255),
+    company_location VARCHAR(255),
     business_email VARCHAR(255) NOT NULL,
     industry VARCHAR(100),
     phone_number VARCHAR(20),

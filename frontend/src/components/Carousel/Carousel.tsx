@@ -22,7 +22,6 @@ const Carousel = () => {
 
 		updatePadding(); // call once on mount
 		window.addEventListener('resize', updatePadding);
-		console.log(cardPadding)
 
 		return () => window.removeEventListener('resize', updatePadding);
 	}, [cardPadding]);

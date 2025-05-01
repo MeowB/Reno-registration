@@ -44,13 +44,12 @@ This route allows merchants to create an account.
 
 ```json
 {
-  "email": "merchant@example.com",      // The merchant's email address (must be unique)
-  "password": "test1234",                // Password for the merchant's account
-  "first_name": "Ada",                   // First name of the merchant
-  "company_name": "Ada Co",              // Name of the company
-  "business_email": "ada@company.com",   // Business contact email
-  "industry": "Tech",                    // The industry the merchant operates in
-  "phone_number": "123-456-7890"         // Merchant's contact phone number
+	"firstName": "Ada",                   // First name of the merchant
+	"companyLocation": "Philippines",     // Location of the company
+	"email": "merchant@example.com",      // The merchant's email address (must be unique)
+	"industry": "Tech",                   // The industry the merchant operates in
+	"phoneNumber": "123-456-7890",        // Merchant's contact phone number
+	"password": "test1234",               // Password for the merchant's account
 }
 ```
 

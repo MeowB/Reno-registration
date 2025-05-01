@@ -81,6 +81,7 @@
 			height: 1rem;
 			border: 3px solid transparent;
 			border-radius: 3px;
+			cursor: pointer;
 
 		}
 
@@ -103,7 +104,7 @@
 		border-radius: 8px;
 		margin-top: 20px;
 		padding: 15px;
-
+		cursor: pointer;
 	}
 
 	.bottom {
@@ -116,9 +117,9 @@
 		text-align: center;
 		letter-spacing: 0;
 
-		@media screen and (min-height: 760px ) {
+		@media screen and (min-height: 760px) {
 			position: absolute;
-			
+
 		}
 
 		button {
@@ -126,8 +127,9 @@
 			background-color: transparent;
 			border: none;
 			font-weight: bold;
+			cursor: pointer;
 		}
 	}
-	
+
 
 }

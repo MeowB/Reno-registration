@@ -7,16 +7,15 @@ const router = express.Router()
 
 router.post('/register/merchant', async (req, res) => {
 	const {
+		firstName,
+		companyLocation,
 		email,
-		password,
-		first_name,
-		company_name,
-		business_email,
 		industry,
-		phone_number,
+		phoneNumber,
+		password	
 	} = req.body;
 
-	if (!email || !password || !first_name || !business_email) {
+	if (!email || !password || !firstName) {
 		return res.status(400).json({ error: 'Missing required fields' })
 	}
 
@@ -34,13 +33,13 @@ router.post('/register/merchant', async (req, res) => {
 			const userId = this.lastID
 
 			const profileQuery = `
-      		INSERT INTO merchant_profiles (user_id, first_name, company_name, business_email, industry, phone_number)
+      		INSERT INTO merchant_profiles (user_id, first_name, company_location, business_email, industry, phone_number)
    	 	  	VALUES (?, ?, ?, ?, ?, ?)
     	`;
 
 			db.run(
 				profileQuery,
-				[userId, first_name, company_name, business_email, industry, phone_number],
+				[userId, firstName, companyLocation, email, industry, phoneNumber],
 				(err) => {
 					if (err) {
 						console.error('Error inserting into merchant_profiles: ', err.message)

@@ -1,5 +1,7 @@
 import Form from './components/Form/Form'
 import Carousel from './components/Carousel/Carousel'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.scss'
 
 
@@ -15,6 +17,7 @@ function App() {
 				</div>
 			</header>
 			<main className="background">
+				<ToastContainer position="top-right" autoClose={3000} hideProgressBar />
 				<div className="overlay">
 					<section className="content">
 						<div className="text-content">
