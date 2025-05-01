@@ -2,8 +2,32 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Carousel.scss';
+import { useEffect, useState } from 'react';
 
 const Carousel = () => {
+	const [cardPadding, setCardPadding] = useState<string>("13%")
+
+
+	useEffect(() => {
+		const updatePadding = () => {
+			const width = window.innerWidth;
+			if (width < 1250) {
+				setCardPadding('0%');
+			} else if (width < 1400) {
+				setCardPadding('9%')
+			} else {
+				setCardPadding('13%');
+			}
+		};
+
+		updatePadding(); // call once on mount
+		window.addEventListener('resize', updatePadding);
+		console.log(cardPadding)
+
+		return () => window.removeEventListener('resize', updatePadding);
+	}, [cardPadding]);
+
+
 	const settings = {
 		dots: true,
 		infinite: false,
@@ -11,17 +35,9 @@ const Carousel = () => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		centerMode: true,
-		centerPadding: '13%', // adjust this for how much of the next slide shows
+		centerPadding: cardPadding, // adjust this for how much of the next slide shows
 		arrows: false
 	};
-
-
-	const cards = [
-		{ id: 1, text: 'Card 1' },
-		{ id: 2, text: 'Card 2' },
-		{ id: 3, text: 'Card 3' },
-		{ id: 4, text: 'Card 4' }
-	];
 
 	return (
 

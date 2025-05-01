@@ -7,7 +7,7 @@
 
 		.carousel-card {
 			max-width: 500px;
-			height: 300px;
+			min-height: 300px;
 			margin: 0 10px; // horizontal gap between slides
 			background: #242627;
 			border-radius: 12px;
@@ -53,6 +53,9 @@
 
 	.slick-dots {
 		bottom: -120px; // optional: move dots lower
+		@media screen and (max-height: 715px) {
+			bottom: -60px;
+		}
 		li {
 		  margin: 0 6px;
 	  

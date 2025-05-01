@@ -18,8 +18,8 @@ function App() {
 				<div className="overlay">
 					<section className="content">
 						<div className="text-content">
-							<h1>Manage your Money anywhere</h1>
-							<p>View all the analytics and grow your business from anywhere!</p>
+							<h1>Manage your Money <br />anywhere</h1>
+							<p>View all the analytics and grow your business <br /> from anywhere!</p>
 						</div>
 						<div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
 							<Carousel />
