@@ -23,7 +23,6 @@ This is a small full-stack application built with **React**, **Express**, and **
 - Data persistence with SQLite
 - Clean project structure for easy extension
 - Password hashing for security
-- jwt authentication for secure login
 ---
 
 ## API Documentation

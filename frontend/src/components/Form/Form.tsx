@@ -55,12 +55,12 @@ const Form = () => {
 							? "Don't have an account? "
 							: "Already have an account? "
 					}
-					{
-						whichForm === 'login'
-							? <button onClick={() => setWhichForm('merchant')}> <FontAwesomeIcon icon={faBriefcase} /> Create an Account</button>
-							: <button onClick={() => setWhichForm('login')}> <FontAwesomeIcon icon={faArrowRightToBracket} /> Log In</button>
-					}
 				</p>
+				{
+					whichForm === 'login'
+						? <button onClick={() => setWhichForm('merchant')}> <FontAwesomeIcon icon={faBriefcase} /> Create an Account</button>
+						: <button onClick={() => setWhichForm('login')}> <FontAwesomeIcon icon={faArrowRightToBracket} /> Log In</button>
+				}
 
 			</div>
 		</div>

@@ -17,7 +17,7 @@ const MerchantForm = () => {
 		e.preventDefault()
 
 		try {
-			const res = await axios.post('http://localhost:3000/api/register/merchant', formData)
+			const res = await axios.post('/api/register/merchant', formData)
 			console.log(res.data)
 			toast.success('Registration successful!')
 			
@@ -35,7 +35,6 @@ const MerchantForm = () => {
 			[name]: type === 'checkbox' ? (checked as boolean) : value,
 		}));
 
-		console.log(formData);
 	};
 
 	return (

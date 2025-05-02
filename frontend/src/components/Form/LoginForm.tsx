@@ -1,4 +1,22 @@
+import axios from "axios"
+import { FormEvent, useState } from "react"
+
 const LoginForm = () => {
+	const [formData, setFormData] = useState({
+		email: '',
+		password: ''
+	})
+
+	const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+
+		try {
+
+		} catch (error) {
+			
+		}
+	}
+
 	return (
 		<div>
 			<form action="POST">
@@ -13,7 +31,6 @@ const LoginForm = () => {
 				</div>
 			</form>
 		</div>
-
 	)
 }
 

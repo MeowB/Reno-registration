@@ -61,14 +61,14 @@ router.post('/register/agent', async (req, res) => {
 	const {
 		email,
 		password,
-		first_name,
-		last_name,
+		firstName,
+		lastName,
 		region,
-		phone_number
+		phoneNumber
 	} = req.body;
 
 	// Basic validation
-	if (!email || !password || !first_name) {
+	if (!email || !password || !firstName) {
 		return res.status(400).json({ error: 'Missing required fields' });
 	}
 
@@ -95,7 +95,7 @@ router.post('/register/agent', async (req, res) => {
 
 			db.run(
 				profileQuery,
-				[userId, first_name, last_name, region, phone_number],
+				[userId, firstName, lastName, region, phoneNumber],
 				(err) => {
 					if (err) {
 						console.error('Error inserting into agent_profiles:', err.message);
