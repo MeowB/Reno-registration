@@ -1,4 +1,4 @@
-# 📋 Reno use-case
+# 📋 Reno registration
 
 This is a small full-stack application built with **React**, **Express**, and **SQLite**. The app features a basic user registration form that sends input to the backend and stores the data in a local database.
 
