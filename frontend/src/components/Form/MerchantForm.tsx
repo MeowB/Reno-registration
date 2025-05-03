@@ -158,35 +158,19 @@ const MerchantForm = () => {
 					onChange={handleChange}
 					style={errors.password ? { border: '1px solid red' } : {}}
 				/>
-				
+
 				{formData.password && (
-					<div style={{ marginTop: '6px' }}>
-						<div
-							style={{
-								height: '8px',
-								width: '100%',
-								backgroundColor: '#ddd',
-								borderRadius: '4px',
-								overflow: 'hidden',
-								marginBottom: '4px',
-							}}
-						>
+					<div className="pswd-indicator">
+						<div className="indicator-background">
 							<div
+								className="indicator-bar"
 								style={{
-									height: '100%',
 									width: `${(passwordStrength + 1) * 20}%`,
 									backgroundColor: strengthColors[passwordStrength],
-									transition: 'width 0.3s ease',
 								}}
 							/>
 						</div>
-						<p
-							style={{
-								color: strengthColors[passwordStrength],
-								fontSize: '0.85rem',
-								fontWeight: 600,
-							}}
-						>
+						<p style={{ color: strengthColors[passwordStrength] }}>
 							{strengthLabels[passwordStrength]} Password
 						</p>
 					</div>

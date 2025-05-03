@@ -65,6 +65,30 @@
 		p.error {
 			color: red;
 		}
+
+		.pswd-indicator {
+			margin-top: 6px;
+
+			.indicator-background {
+
+				height: 8px;
+				width: 100%;
+				background-color: #ddd;
+				border-radius: 4px;
+				overflow: hidden;
+				margin-bottom: 4px;
+
+				.indicator-bar {
+					height: 100%;
+					transition: width 0.3s ease;
+				}
+			}
+
+			p {
+				font-size: 0.85rem;
+				font-weight: 600;
+			}
+		}
 	}
 
 	.checkbox {
@@ -149,5 +173,5 @@
 			}
 		}
 	}
-	
+
 }
