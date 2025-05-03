@@ -87,3 +87,22 @@ main.background {
 		}
 	}
 }
+
+
+@media screen and (max-width: 380px) {
+
+	main.background {
+		.overlay {
+			.content {
+				.text-content {
+					font-size: 12px;
+					
+					h1 {
+		
+						font-size: 32px;
+					}
+				}
+			}
+		}
+	}
+}

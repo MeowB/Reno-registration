@@ -26,6 +26,7 @@
 
 				.profile {
 					display: flex;
+					align-items: center;
 					margin-top: 30px;
 
 					img {
@@ -37,12 +38,14 @@
 
 						.name {
 							font-size: 16px;
-							line-height: 1.2rem;
+							line-height: 1.8rem;
 
 						}
 
 						.role {
 							font-size: 14px;
+							line-height: 1.2rem;
+
 						}
 
 					}
@@ -85,4 +88,17 @@
 		}
 	}
 
+}
+
+
+@media screen and (max-width: 520px) {
+	.carousel {
+
+		.carousel-wrapper {
+
+			.carousel-card {
+				max-width: 320px;
+			}
+		}
+	}
 }
