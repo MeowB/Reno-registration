@@ -87,8 +87,7 @@ This route allows users to login.
 
 ## 🧱 Database Note
 
-SQLite is used for simplicity and rapid development. It's ideal for small-scale apps or prototypes.  
-If the application grows, it can be easily migrated to a more powerful relational database like **PostgreSQL** or **MySQL** with minimal changes, especially if an ORM (like Sequelize or Prisma) is used.
+SQLite is used for simplicity and rapid development. It's ideal for small-scale apps or prototypes.
 
 
 ## Command Line Tools

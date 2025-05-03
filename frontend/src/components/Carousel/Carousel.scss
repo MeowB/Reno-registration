@@ -7,40 +7,45 @@
 
 		.carousel-card {
 			max-width: 500px;
-			min-height: 300px;
-			margin: 0 10px; // horizontal gap between slides
+			margin: 0 10px; // horizontal gap between slides ?
 			background: #242627;
 			border-radius: 12px;
-			text-align: center;
-			padding: 50px;
-
 			text-align: start;
 			line-height: 1.8rem;
 
-			p {
-				font-size: 18px;
-			}
-
-			.profile {
+			.wrapper {
 				display: flex;
-				margin-top: 30px;
+				flex-direction: column;
+				justify-content: space-between;
+				padding: 50px;
+				min-height: 300px;
 
-				img {
-					border-radius: 50%;
+				p {
+					font-size: 18px;
 				}
 
-				.text {
-					margin-left: 15px;
-					.name {
-						font-size: 16px;
-						line-height: 1.2rem;
+				.profile {
+					display: flex;
+					margin-top: 30px;
 
+					img {
+						border-radius: 50%;
 					}
 
-					.role {
-						font-size: 14px;
+					.text {
+						margin-left: 15px;
+
+						.name {
+							font-size: 16px;
+							line-height: 1.2rem;
+
+						}
+
+						.role {
+							font-size: 14px;
+						}
+
 					}
-					
 				}
 			}
 		}
@@ -53,30 +58,31 @@
 
 	.slick-dots {
 		bottom: -120px; // optional: move dots lower
+
 		@media screen and (max-height: 715px) {
 			bottom: -60px;
 		}
-		
+
 		li {
-		  margin: 0 6px;
-	  
-		  button {
-			width: 5px;
-			height: 5px;
-			border-radius: 50%;
-			border: 1px solid #Fff;
-	  
-			&::before {
-			  content: '';
-			  display: none; // hide default circle
+			margin: 0 6px;
+
+			button {
+				width: 5px;
+				height: 5px;
+				border-radius: 50%;
+				border: 1px solid #Fff;
+
+				&::before {
+					content: '';
+					display: none; // hide default circle
+				}
 			}
-		  }
-	  
-		  &.slick-active button {
-			background-color: #fff; // active dot color
-			border-color: #fff;  // optional: add border or glow
-		  }
+
+			&.slick-active button {
+				background-color: #fff; // active dot color
+				border-color: #fff; // optional: add border or glow
+			}
 		}
-	  }
+	}
 
 }
