@@ -47,7 +47,6 @@ const MerchantForm = () => {
 			...prev,
 			[name]: type === 'checkbox' ? (checked as boolean) : value,
 		}));
-		console.log(passwordStrength)
 	};
 
 	const validateForm = () => {
