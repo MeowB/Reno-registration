@@ -1,4 +1,4 @@
-# 📋 Reno registration
+# 📋 Registration app
 
 This is a small full-stack application built with **React**, **Express**, and **SQLite**. The app features a basic user registration form that sends input to the backend and stores the data in a local database.
 
@@ -22,7 +22,9 @@ This is a small full-stack application built with **React**, **Express**, and **
 - REST API to handle user submissions
 - Data persistence with SQLite
 - Clean project structure for easy extension
-- Password hashing for security
+- Password hashing for security (bcrypt)
+- Password strength indicator (zxcvbn)
+- Responsive design for mobile and desktop
 ---
 
 ## API Documentation

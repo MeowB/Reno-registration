@@ -1,8 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
+import zxcvbn from 'zxcvbn'
 
 const AgentForm = () => {
+	const [passwordStrength, setPasswordStrength] = useState<number>(0)
+	const strengthLabels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+	const strengthColors = ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#27ae60'];
+
 	const [errors, setErrors] = useState<{ [key: string]: string }>({});
 	const [formData, setFormData] = useState({
 		firstName: '',
@@ -32,6 +37,11 @@ const AgentForm = () => {
 	const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		const { name, value, type } = e.target;
 		const checked = (e.target as HTMLInputElement).checked;
+
+		if (name === 'password') {
+			const { score } = zxcvbn(value)
+			setPasswordStrength(score)
+		}
 
 		setFormData((prev) => ({
 			...prev,
@@ -144,6 +154,40 @@ const AgentForm = () => {
 					onChange={handleChange}
 					style={errors.password ? { border: '1px solid red' } : {}}
 				/>
+
+				{formData.password && (
+					<div style={{ marginTop: '6px' }}>
+						<div
+							style={{
+								height: '8px',
+								width: '100%',
+								backgroundColor: '#ddd',
+								borderRadius: '4px',
+								overflow: 'hidden',
+								marginBottom: '4px',
+							}}
+						>
+							<div
+								style={{
+									height: '100%',
+									width: `${(passwordStrength + 1) * 20}%`,
+									backgroundColor: strengthColors[passwordStrength],
+									transition: 'width 0.3s ease',
+								}}
+							/>
+						</div>
+						<p
+							style={{
+								color: strengthColors[passwordStrength],
+								fontSize: '0.85rem',
+								fontWeight: 600,
+							}}
+						>
+							{strengthLabels[passwordStrength]} Password
+						</p>
+					</div>
+				)}
+				
 				{errors.password && (<p className="error">{errors.password}</p>)}
 			</div>
 			<div className="form-group checkbox">

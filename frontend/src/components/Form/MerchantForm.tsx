@@ -1,8 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
+import zxcvbn from 'zxcvbn'
 
 const MerchantForm = () => {
+	const [passwordStrength, setPasswordStrength] = useState<number>(0)
+	const strengthLabels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+	const strengthColors = ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#27ae60'];
+
 	const [errors, setErrors] = useState<{ [key: string]: string }>({});
 	const [formData, setFormData] = useState({
 		firstName: '',
@@ -33,10 +38,16 @@ const MerchantForm = () => {
 		const { name, value, type } = e.target;
 		const checked = (e.target as HTMLInputElement).checked;
 
+		if (name === 'password') {
+			const { score } = zxcvbn(value)
+			setPasswordStrength(score)
+		}
+
 		setFormData((prev) => ({
 			...prev,
 			[name]: type === 'checkbox' ? (checked as boolean) : value,
 		}));
+		console.log(passwordStrength)
 	};
 
 	const validateForm = () => {
@@ -56,7 +67,7 @@ const MerchantForm = () => {
 		if (!formData.industry.trim()) newErrors.industry = 'Industry is required'
 
 		if (!formData.phoneNumber.trim()) newErrors.phoneNumber = 'Phone number is required'
-		
+
 		if (!formData.password.trim()) newErrors.password = 'Password is required'
 
 		if (!formData.acceptPrivacy) newErrors.acceptPrivacy = 'You must accept the privacy policy'
@@ -135,8 +146,8 @@ const MerchantForm = () => {
 					value={formData.phoneNumber}
 					onChange={handleChange}
 					style={errors.phoneNumber ? { border: '1px solid red' } : {}}
-					/>
-					{errors.phoneNumber && (<p className="error">{errors.phoneNumber}</p>)}
+				/>
+				{errors.phoneNumber && (<p className="error">{errors.phoneNumber}</p>)}
 			</div>
 			<div className="form-group">
 				<input
@@ -147,8 +158,43 @@ const MerchantForm = () => {
 					value={formData.password}
 					onChange={handleChange}
 					style={errors.password ? { border: '1px solid red' } : {}}
-					/>
-					{errors.password && (<p className="error">{errors.password}</p>)}
+				/>
+				
+				{formData.password && (
+					<div style={{ marginTop: '6px' }}>
+						<div
+							style={{
+								height: '8px',
+								width: '100%',
+								backgroundColor: '#ddd',
+								borderRadius: '4px',
+								overflow: 'hidden',
+								marginBottom: '4px',
+							}}
+						>
+							<div
+								style={{
+									height: '100%',
+									width: `${(passwordStrength + 1) * 20}%`,
+									backgroundColor: strengthColors[passwordStrength],
+									transition: 'width 0.3s ease',
+								}}
+							/>
+						</div>
+						<p
+							style={{
+								color: strengthColors[passwordStrength],
+								fontSize: '0.85rem',
+								fontWeight: 600,
+							}}
+						>
+							{strengthLabels[passwordStrength]} Password
+						</p>
+					</div>
+				)}
+
+
+				{errors.password && (<p className="error">{errors.password}</p>)}
 			</div>
 			<div className="form-group checkbox">
 				<label>
