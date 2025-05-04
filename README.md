@@ -46,7 +46,7 @@ This route allows merchants to create an account.
 ```json
 {
 	"firstName": "Ada",                   // First name of the merchant
-	"companyLocation": "Philippines",     // Location of the company
+	"companyLocation": "United Kingdom",     // Location of the company
 	"email": "merchant@example.com",      // The merchant's email address (must be unique)
 	"industry": "Tech",                   // The industry the merchant operates in
 	"phoneNumber": "123-456-7890",        // Merchant's contact phone number
