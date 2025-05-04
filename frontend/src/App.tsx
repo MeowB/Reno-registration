@@ -13,7 +13,7 @@ function App() {
 		<>
 			<header>
 				<div className="icon">
-					<img src="./src/assets/logo.png" alt="logo" />
+					<img src="/assets/logo.png" alt="logo" />
 				</div>
 			</header>
 			<main className="background">

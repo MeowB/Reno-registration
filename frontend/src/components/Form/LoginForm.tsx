@@ -1,5 +1,6 @@
 import axios from "axios"
 import { ChangeEvent, FormEvent, useState } from "react"
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
 	const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -16,7 +17,7 @@ const LoginForm = () => {
 		try {
 			const res = await axios.post('/api/login', formData)
 			console.log(res.data)
-
+			toast.success('Login succesfull')
 		} catch (error) {
 			console.error('Error loging in: ', error)
 		}
