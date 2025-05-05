@@ -37,6 +37,7 @@ const LoginForm = () => {
 	const validateForm = () => {
 		const newErrors: { [key: string]: string } = {}
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		
 
 		if (!formData.email.trim()) {
 			newErrors.email = 'Email is required'

@@ -56,8 +56,16 @@ const MerchantForm = () => {
 	const validateForm = () => {
 		const newErrors: { [key: string]: string } = {}
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		const phoneRegex = /^\+?[0-9\s\-()]{7,15}$/
+		const nameRegex = /^[A-Za-z\s'-]+$/
 
-		if (!formData.firstName.trim()) newErrors.firstName = 'First name is required'
+
+		if (!formData.firstName.trim()) {
+			newErrors.firstName = 'First name is required'
+		} else if (!nameRegex.test(formData.firstName)) {
+			newErrors.firstName = 'First name contains invalud characters'
+		}
+
 
 		if (!formData.companyLocation.trim()) newErrors.companyLocation = 'Location is required'
 
@@ -69,7 +77,11 @@ const MerchantForm = () => {
 
 		if (!formData.industry.trim()) newErrors.industry = 'Industry is required'
 
-		if (!formData.phoneNumber.trim()) newErrors.phoneNumber = 'Phone number is required'
+		if (!formData.phoneNumber.trim()) {
+			newErrors.phoneNumber = 'Phone number is required'
+		} else if (!phoneRegex.test(formData.phoneNumber)) {
+			newErrors.phoneNumber = 'Enter a valid phone number'
+		}
 
 		if (formData.password && formData.password.length < 8) {
 			newErrors.password = 'Password must be at least 8 characters long'
