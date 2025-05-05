@@ -1,10 +1,13 @@
-import { ChangeEvent, FormEvent, useState } from "react"
+import React, { ChangeEvent, FormEvent, MouseEventHandler, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 import zxcvbn from 'zxcvbn'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 const MerchantForm = () => {
 	const [passwordStrength, setPasswordStrength] = useState<number>(0)
+	const [togglePassword, setTogglePassword] = useState<boolean>(false)
 	const strengthLabels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
 	const strengthColors = ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#27ae60'];
 
@@ -74,6 +77,17 @@ const MerchantForm = () => {
 
 		setErrors(newErrors)
 		return Object.keys(newErrors).length === 0
+	}
+
+	const handlePasswordClick = (e: React.MouseEvent<HTMLElement>) => {
+		setTogglePassword(!togglePassword)
+		
+		const icon = e.currentTarget
+		const input = icon.previousElementSibling as HTMLInputElement | null
+
+		if (input) {
+			input.type = input.type === 'password' ? 'text' : 'password'
+		}
 	}
 
 	return (
@@ -150,7 +164,7 @@ const MerchantForm = () => {
 			</div>
 			<div className="form-group">
 				<input
-					type="password"
+					type={togglePassword ? 'password' : 'text'}
 					id="password"
 					name="password"
 					placeholder="Password"
@@ -158,6 +172,11 @@ const MerchantForm = () => {
 					onChange={handleChange}
 					style={errors.password ? { border: '1px solid red' } : {}}
 				/>
+
+				{togglePassword
+					? <FontAwesomeIcon onClick={(e) => handlePasswordClick(e)} className="pswd-eye" icon={faEye} />
+					: <FontAwesomeIcon onClick={(e) => handlePasswordClick(e)} className="pswd-eye" icon={faEyeSlash} />
+				}
 
 				{formData.password && (
 					<div className="pswd-indicator">
