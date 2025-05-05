@@ -2,9 +2,13 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 import zxcvbn from 'zxcvbn'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+
 
 const AgentForm = () => {
 	const [passwordStrength, setPasswordStrength] = useState<number>(0)
+	const [togglePassword, setTogglePassword] = useState<boolean>(false)
 	const strengthLabels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
 	const strengthColors = ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#27ae60'];
 
@@ -31,6 +35,7 @@ const AgentForm = () => {
 
 		} catch (error) {
 			console.error('Error posting user: ', error)
+			toast.error('Error registering user')
 		}
 	}
 
@@ -67,7 +72,15 @@ const AgentForm = () => {
 
 		if (!formData.phoneNumber.trim()) newErrors.phoneNumber = 'Phone number is required'
 
-		if (!formData.password.trim()) newErrors.password = 'Password is required'
+		if (formData.password && formData.password.length < 8) {
+			newErrors.password = 'Password must be at least 8 characters long'
+		} else if (!/[A-Z]/.test(formData.password)) {
+			newErrors.password = 'Password must include an uppercase letter'
+		} else if (!/[a-z]/.test(formData.password)) {
+			newErrors.password = 'Password must include a lowercase letter'
+		} else if (!/[0-9]/.test(formData.password)) {
+			newErrors.password = 'Password must include a number'
+		}
 
 		if (!formData.acceptPrivacy) newErrors.acceptPrivacy = 'You must accept the privacy policy'
 
@@ -75,6 +88,11 @@ const AgentForm = () => {
 		setErrors(newErrors)
 		return Object.keys(newErrors).length === 0
 	}
+
+	const handlePasswordClick = () => {
+		setTogglePassword(!togglePassword)
+	}
+
 
 	return (
 		<form action="POST" onSubmit={handleRegister}>
@@ -107,7 +125,7 @@ const AgentForm = () => {
 					type="email"
 					id="email"
 					name="email"
-					placeholder="Enter your email"
+					placeholder="Email"
 					value={formData.email}
 					onChange={handleChange}
 					style={errors.email ? { border: '1px solid red' } : {}}
@@ -137,7 +155,7 @@ const AgentForm = () => {
 					type="tel"
 					id="phoneNumber"
 					name="phoneNumber"
-					placeholder="Enter your phone number"
+					placeholder="Phone Number"
 					value={formData.phoneNumber}
 					onChange={handleChange}
 					style={errors.phoneNumber ? { border: '1px solid red' } : {}}
@@ -146,14 +164,19 @@ const AgentForm = () => {
 			</div>
 			<div className="form-group">
 				<input
-					type="password"
+					type={togglePassword ? 'text' : 'password'}
 					id="password"
 					name="password"
-					placeholder="Create a password"
+					placeholder="Password"
 					value={formData.password}
 					onChange={handleChange}
 					style={errors.password ? { border: '1px solid red' } : {}}
 				/>
+
+				{togglePassword
+					? <FontAwesomeIcon onClick={handlePasswordClick} className="pswd-eye" icon={faEye} />
+					: <FontAwesomeIcon onClick={handlePasswordClick} className="pswd-eye" icon={faEyeSlash} />
+				}
 
 				{formData.password && (
 					<div style={{ marginTop: '6px' }}>
@@ -187,7 +210,7 @@ const AgentForm = () => {
 						</p>
 					</div>
 				)}
-				
+
 				{errors.password && (<p className="error">{errors.password}</p>)}
 			</div>
 			<div className="form-group checkbox">

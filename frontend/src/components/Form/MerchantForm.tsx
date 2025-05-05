@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, MouseEventHandler, useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 import zxcvbn from 'zxcvbn'
@@ -34,6 +34,7 @@ const MerchantForm = () => {
 
 		} catch (error) {
 			console.error('Error posting user: ', error)
+			toast.error('Error registering user')
 		}
 	}
 
@@ -70,7 +71,15 @@ const MerchantForm = () => {
 
 		if (!formData.phoneNumber.trim()) newErrors.phoneNumber = 'Phone number is required'
 
-		if (!formData.password.trim()) newErrors.password = 'Password is required'
+		if (formData.password && formData.password.length < 8) {
+			newErrors.password = 'Password must be at least 8 characters long'
+		} else if (!/[A-Z]/.test(formData.password)) {
+			newErrors.password = 'Password must include an uppercase letter'
+		} else if (!/[a-z]/.test(formData.password)) {
+			newErrors.password = 'Password must include a lowercase letter'
+		} else if (!/[0-9]/.test(formData.password)) {
+			newErrors.password = 'Password must include a number'
+		}
 
 		if (!formData.acceptPrivacy) newErrors.acceptPrivacy = 'You must accept the privacy policy'
 
@@ -79,15 +88,8 @@ const MerchantForm = () => {
 		return Object.keys(newErrors).length === 0
 	}
 
-	const handlePasswordClick = (e: React.MouseEvent<HTMLElement>) => {
+	const handlePasswordClick = () => {
 		setTogglePassword(!togglePassword)
-		
-		const icon = e.currentTarget
-		const input = icon.previousElementSibling as HTMLInputElement | null
-
-		if (input) {
-			input.type = input.type === 'password' ? 'password' : 'text'
-		}
 	}
 
 	return (
@@ -174,8 +176,8 @@ const MerchantForm = () => {
 				/>
 
 				{togglePassword
-					? <FontAwesomeIcon onClick={(e) => handlePasswordClick(e)} className="pswd-eye" icon={faEye} />
-					: <FontAwesomeIcon onClick={(e) => handlePasswordClick(e)} className="pswd-eye" icon={faEyeSlash} />
+					? <FontAwesomeIcon onClick={handlePasswordClick} className="pswd-eye" icon={faEye} />
+					: <FontAwesomeIcon onClick={handlePasswordClick} className="pswd-eye" icon={faEyeSlash} />
 				}
 
 				{formData.password && (
