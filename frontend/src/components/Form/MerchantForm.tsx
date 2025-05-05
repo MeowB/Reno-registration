@@ -86,7 +86,7 @@ const MerchantForm = () => {
 		const input = icon.previousElementSibling as HTMLInputElement | null
 
 		if (input) {
-			input.type = input.type === 'password' ? 'text' : 'password'
+			input.type = input.type === 'password' ? 'password' : 'text'
 		}
 	}
 
@@ -164,7 +164,7 @@ const MerchantForm = () => {
 			</div>
 			<div className="form-group">
 				<input
-					type={togglePassword ? 'password' : 'text'}
+					type={!togglePassword ? 'password' : 'text'}
 					id="password"
 					name="password"
 					placeholder="Password"
