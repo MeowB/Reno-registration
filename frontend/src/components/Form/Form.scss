@@ -172,10 +172,16 @@
 	}
 }
 
+@media screen and (max-width: 1040px) {
+	.form {
+		
+		padding: 20px;
+	}
+}
+
 @media screen and (max-width: 380px) {
 	.form {
 		min-width: 0;
-		padding: 20px;
 
 		.title {
 			h2 {
